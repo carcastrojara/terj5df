@@ -5,36 +5,36 @@ class App extends Component {
     super(props);
     this.state = {
       guests: [],
-      firstNameInput: '',
-      lastNameInput: '',
+      firstName: '',
+      lastName: '',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleInputChange(event) {
     const target = event.target;
-    const name = target.name;
     const value = target.value;
+    const id = target.id;
+  
     this.setState({
-      [name]: value,
+      [id]: value,
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const newGuest = {
-      firstName: this.state.firstNameInput,
-      lastName: this.state.lastNameInput,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
     };
     const guestsCopy = [...this.state.guests];
     guestsCopy.push(newGuest);
     this.setState({
       guests: guestsCopy,
-      firstNameInput: '',
-      lastNameInput: '',
+      firstName: '',
+      lastName: '',
     });
   }
-
   render() {
     const guestRows = this.state.guests.map((guest, index) => (
       <tr key={index}>
@@ -50,12 +50,12 @@ class App extends Component {
             <form  onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label htmlFor="first-name">Nombre</label>
-                <input type="text" className="form-control" name="firstNameInput" value={this.state.firstNameInput} onChange={this.handleInputChange}/>
+                <input type="text" className="form-control" name="first-name" id="firstName" value={this.state.firstName} onChange={this.handleInputChange}/>
               </div>
 
               <div className="form-group">
                 <label htmlFor="last-name">Apellido</label>
-                <input type="text" className="form-control" name="lastNameInput"  value={this.state.lastNameInput} onChange={this.handleInputChange}/>
+                <input type="text" className="form-control" name="last-name" id="lastName"  value={this.state.lastName} onChange={this.handleInputChange}/>
               </div>
 
               <div className="action">
@@ -83,5 +83,3 @@ class App extends Component {
 }
 
 export default App
-
-
