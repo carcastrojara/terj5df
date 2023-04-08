@@ -16,12 +16,12 @@ it('renders a form with 3 inputs', () => {
 
 it("renders an input with name='first-name'", () => {
   const wrapper = shallow(<App />)
-  expect(wrapper.find("input[name='first-name']").length).toBe(1)
+  expect(wrapper.find("input[name='firstNameInput']").length).toBe(1)
 })
 
 it("renders an input with name='last-name'", () => {
   const wrapper = shallow(<App />)
-  expect(wrapper.find("input[name='last-name']").length).toBe(1)
+  expect(wrapper.find("input[name='lastNameInput']").length).toBe(1)
 })
 
 it('renders a table with two th one for Nombre and the other for Apellido', () => {
@@ -32,12 +32,12 @@ it('renders a table with two th one for Nombre and the other for Apellido', () =
 it('creates a new guest when submitting the form', () => {
   const wrapper = shallow(<App />)
 
-  wrapper.find('input[name="first-name"]').simulate('change', { target: { name: 'first-name',  value: 'Juan' } });
-  wrapper.find('input[name="last-name"]').simulate('change', { target: { name: 'last-name', value: 'Gomez' } });
+  wrapper.find('input[name="firstNameInput"]').simulate('change', { target: { name: 'firstNameInput',  value: 'Juan' } });
+  wrapper.find('input[name="lastNameInput"]').simulate('change', { target: { name: 'lastNameInput', value: 'Gomez' } });
   wrapper.find('form').simulate('submit', {preventDefault(){}, target:
     {
-      'first-name': {value: 'Juan'},
-      'last-name': {value: 'Gomez'},
+      'firstNameInput': {value: 'Juan'},
+      'lastNameInput': {value: 'Gomez'},
       reset: () => {}
     }
   })
